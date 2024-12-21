@@ -105,5 +105,47 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
+let learnedCount = 0;
+
+function updateProgress() {
+    const progress = document.getElementById('progress');
+    if (filteredFlashcards.length > 0) {
+        progress.innerText = `Learn: ${learnedCount}/${filteredFlashcards.length}`;
+    } else {
+        progress.innerText = '';
+    }
+}
+
+function displayFlashcard() {
+    const flashcard = document.getElementById('flashcard');
+    if (filteredFlashcards.length > 0) {
+        flashcard.classList.remove('flipped');
+        document.getElementById('front').innerText = filteredFlashcards[currentIndex].front;
+        document.getElementById('back').innerText = filteredFlashcards[currentIndex].back;
+        updateProgress();
+    } else {
+        document.getElementById('front').innerText = 'Không có từ vựng';
+        document.getElementById('back').innerText = '';
+        updateProgress();
+    }
+}
+
+function nextFlashcard() {
+    if (currentIndex < filteredFlashcards.length - 1) {
+        currentIndex++;
+        learnedCount++;
+        displayFlashcard();
+    }
+}
+
+function prevFlashcard() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        learnedCount = Math.max(0, learnedCount - 1);
+        displayFlashcard();
+    }
+}
+
+
 // Tự động tải file Excel khi trang được tải
 loadExcel();
