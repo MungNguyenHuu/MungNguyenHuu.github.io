@@ -61,6 +61,7 @@ function filterByLesson() {
     filteredFlashcards = selectedLesson === 'all' ? flashcards : flashcards.filter(f => f.lesson === selectedLesson);
     shuffleArray(filteredFlashcards);
     currentIndex = 0;
+    learnedCount = 1;
     displayFlashcard();
 }
 
