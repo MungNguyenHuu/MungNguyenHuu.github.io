@@ -147,6 +147,11 @@ function prevFlashcard() {
     }
 }
 
+document.getElementById("showPdfButton").addEventListener("click", function () {
+    const pdfFilePath = "vocabularyN5_v2.pdf";
+    window.open(pdfFilePath, "_blank"); // Mở file PDF trong tab mới
+});
+
 
 // Tự động tải file Excel khi trang được tải
 loadExcel();

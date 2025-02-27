@@ -13,7 +13,10 @@
         <option value="all">All</option>
     </select>
     <div id="flashcardContainer">
-        <div id="progress" style="color: #ffffff;"></div>
+        <div class="top-bar">
+            <div id="progress" style="color: #ffffff;"></div>
+            <button id="showPdfButton">Show PDF</button>
+        </div>
         <div class="flashcard" id="flashcard" onclick="flipFlashcard()">
             <div id="front" class="front"></div>
             <div id="back" class="back"></div>
@@ -25,6 +28,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 
 </html>
