@@ -97,11 +97,11 @@ function nextFlashcard() {
 }
 
 document.addEventListener('keydown', (event) => {
-    if (event.key === 's') {
+    if (event.key === 'd') {
         flipFlashcard();
-    } else if (event.key === 'a') {
+    } else if (event.key === 's') {
         prevFlashcard();
-    } else if (event.key === 'd') {
+    } else if (event.key === 'f') {
         nextFlashcard();
     }
 });
