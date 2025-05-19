@@ -154,4 +154,35 @@ document.getElementById("showPdfButton").addEventListener("click", function () {
 
 
 // Tự động tải file Excel khi trang được tải
-loadExcel();
+// loadExcel();
+
+
+function loadAllExcel() {
+    loadExcel(); // Chính là hàm đã có
+}
+
+function loadKanjiExcel() {
+    fetch(filePath)
+        .then(response => response.arrayBuffer())
+        .then(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+            // Parse toàn bộ flashcards
+            const allCards = parseData(jsonData);
+
+            // Lọc: chỉ lấy từ có cột Hán tự (cột thứ 2 trong file Excel)
+            const rawRows = jsonData.slice(1); // Bỏ hàng tiêu đề nếu có
+
+            flashcards = allCards.filter((card, index) => {
+                const row = rawRows[index];
+                return row && row[1] && row[1].toString().trim() !== ""; // cột Hán tự
+            });
+
+            populateLessons();
+            filterByLesson();
+        })
+        .catch(err => console.error("Không thể đọc file Excel:", err));
+}

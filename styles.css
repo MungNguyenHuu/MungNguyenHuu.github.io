@@ -133,3 +133,24 @@ select {
 #showPdfButton:hover {
     background-color: #0056b3;
 }
+
+.load-buttons {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.load-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.load-buttons button:hover {
+    background-color: #218838;
+}
