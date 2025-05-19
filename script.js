@@ -20,22 +20,38 @@ function loadExcel() {
         .catch(err => console.error("Không thể đọc file Excel:", err));
 }
 
-function parseData(jsonData) {
+function parseData(jsonData, kanjiOnly = false) {
     let cards = [];
     let currentLesson = '';
     jsonData.forEach(row => {
-        if (row[0] && row[0].includes('Bài')) {
+        if (row[0] && row[0].toString().includes('Bài')) {
             currentLesson = row[0];
         } else {
-            cards.push({
-                lesson: currentLesson,
-                front: `${row[0] || ''}\n${row[1] || ''}`,
-                back: `${row[3] || ''}\n${row[2] || ''}\n${row[4] || ''}`
-            });
+            if (row.length >= 5) {
+                const tuVung = row[0] || '';
+                const hanTu = row[1] || '';
+                const amHan = row[2] || '';
+                const phatAm = row[3] || '';
+                const nghia = row[4] || '';
+
+                if (kanjiOnly && !hanTu.trim()) return; // bỏ nếu không có hán tự
+
+                let front = kanjiOnly ? hanTu : `${tuVung}\n${hanTu}`;
+                let back = kanjiOnly
+                    ? `${amHan}\n${tuVung}\n${phatAm}\n${nghia}`
+                    : `${phatAm}\n${amHan}\n${nghia}`;
+
+                cards.push({
+                    lesson: currentLesson,
+                    front,
+                    back
+                });
+            }
         }
     });
     return cards;
 }
+
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -170,19 +186,11 @@ function loadKanjiExcel() {
             const worksheet = workbook.Sheets[sheetName];
             const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-            // Parse toàn bộ flashcards
-            const allCards = parseData(jsonData);
-
-            // Lọc: chỉ lấy từ có cột Hán tự (cột thứ 2 trong file Excel)
-            const rawRows = jsonData.slice(1); // Bỏ hàng tiêu đề nếu có
-
-            flashcards = allCards.filter((card, index) => {
-                const row = rawRows[index];
-                return row && row[1] && row[1].toString().trim() !== ""; // cột Hán tự
-            });
-
+            flashcards = parseData(jsonData, true); // true = chế độ Hán tự
             populateLessons();
             filterByLesson();
         })
         .catch(err => console.error("Không thể đọc file Excel:", err));
+    document.getElementById("flashcard").classList.add("kanji-mode");
 }
+

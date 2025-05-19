@@ -154,3 +154,8 @@ select {
 .load-buttons button:hover {
     background-color: #218838;
 }
+
+.flashcard.kanji-mode .front {
+    font-size: 50px;
+    /* font-weight: bold; */
+}
