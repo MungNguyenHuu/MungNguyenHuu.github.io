@@ -113,12 +113,20 @@ function nextFlashcard() {
 }
 
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'd') {
-        flipFlashcard();
-    } else if (event.key === 's') {
-        prevFlashcard();
-    } else if (event.key === 'f') {
-        nextFlashcard();
+    switch (event.key) {
+        case 'ArrowUp':
+        case 'ArrowDown':
+        case 'd':
+            flipFlashcard();
+            break;
+        case 'ArrowLeft':
+        case 's':
+            prevFlashcard();
+            break;
+        case 'ArrowRight':
+        case 'f':
+            nextFlashcard();
+            break;
     }
 });
 
