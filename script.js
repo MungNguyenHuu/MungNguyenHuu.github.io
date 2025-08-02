@@ -3,7 +3,7 @@ let filteredFlashcards = [];
 let currentIndex = 0;
 
 // Tự động tải file Excel từ cùng thư mục
-const filePath = "vocabularyN5_v2.xlsx";
+const filePath = "TuVungN4N5.xlsx";
 
 function loadExcel() {
     fetch(filePath)
@@ -62,7 +62,22 @@ function shuffleArray(array) {
 
 function populateLessons() {
     const lessonSelect = document.getElementById('lessonSelect');
-    const lessons = [...new Set(flashcards.map(f => f.lesson))].filter(lesson => lesson);
+    lessonSelect.innerHTML = ''; // Clear cũ
+
+    const allOption = document.createElement('option');
+    allOption.value = 'all';
+    allOption.innerText = 'All';
+    lessonSelect.appendChild(allOption);
+
+    const lessons = [...new Set(flashcards.map(f => f.lesson))]
+        .filter(lesson => lesson)
+        .sort((a, b) => {
+            // Trích số bài từ chuỗi kiểu "Bài 12", "Bài 3", v.v.
+            const numA = parseInt(a.match(/\d+/));
+            const numB = parseInt(b.match(/\d+/));
+            return numB - numA; // Giảm dần
+        });
+
     lessons.forEach(lesson => {
         const option = document.createElement('option');
         option.value = lesson;
@@ -70,6 +85,7 @@ function populateLessons() {
         lessonSelect.appendChild(option);
     });
 }
+
 
 function filterByLesson() {
     const lessonSelect = document.getElementById('lessonSelect');
@@ -164,7 +180,7 @@ function prevFlashcard() {
 }
 
 document.getElementById("showPdfButton").addEventListener("click", function () {
-    const pdfFilePath = "vocabularyN5_v2.pdf";
+    const pdfFilePath = "TuVungN4N5.pdf";
     window.open(pdfFilePath, "_blank"); // Mở file PDF trong tab mới
 });
 
