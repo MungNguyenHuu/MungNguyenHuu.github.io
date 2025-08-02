@@ -143,7 +143,7 @@ let learnedCount = 0;
 function updateProgress() {
     const progress = document.getElementById('progress');
     if (filteredFlashcards.length > 0) {
-        progress.innerText = `Learn: ${learnedCount}/${filteredFlashcards.length}`;
+        progress.innerText = `Learned: ${learnedCount}/${filteredFlashcards.length}`;
     } else {
         progress.innerText = '';
     }
