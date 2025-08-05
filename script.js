@@ -128,14 +128,10 @@ function nextFlashcard() {
     }
 }
 
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'd') {
-        flipFlashcard();
-    } else if (event.key === 's') {
-        prevFlashcard();
-    } else if (event.key === 'f') {
-        nextFlashcard();
-    }
+document.addEventListener('keydown', ({ key }) => {
+    if (key === 'ArrowRight' || key === 'f') return nextFlashcard();
+    if (key === 'ArrowLeft' || key === 's') return prevFlashcard();
+    if (['ArrowUp', 'ArrowDown', 'd'].includes(key)) return flipFlashcard();
 });
 
 let learnedCount = 0;
