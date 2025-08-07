@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>JLPT N4/N5 Word Quiz – Multiple Choice Practice</title>
+    <link rel="stylesheet" href="/css/quiz.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <h1>JLPT N4/N5 Word Quiz – Multiple Choice Practice</h1>
+
+    <div class="controls">
+        <select id="lessonSelect" onchange="startQuiz()"></select>
+        <select id="questionType">
+            <option value="vn-hk">Vietnamese → Hiragana/Katakana</option>
+            <option value="hk-vn">Hiragana/Katakana → Vietnamese</option>
+            <option value="hk-kanji">Hiragana/Katakana → Kanji</option>
+            <option value="kanji-hk">Kanji → Hiragana/Katakana</option>
+        </select>
+    </div>
+    
+    <div id="quizContainer" class="hidden">
+        <div id="questionBox"></div>
+        <div id="choices"></div>
+        <button onclick="prevQuestion()" id="prevButton">Prev</button>
+        <button onclick="nextQuestion()" id="nextButton">Next</button>
+        <div id="feedback"></div>
+    </div>
+
+    <script src="/js/quiz.js"></script>
+</body>
+</html>

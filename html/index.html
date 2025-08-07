@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học từ vựng với Flashcards</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <select id="lessonSelect" onchange="filterByLesson()">
+        <option value="all">All</option>
+    </select>
+    <div class="load-buttons">
+        <button onclick="loadAllExcel()">All</button>
+        <button onclick="loadKanjiExcel()">Kanji</button>
+        <button id="showPdfButton">Show PDF</button>
+        <button id="quizButton">Quiz</button>
+    </div>
+    <div id="flashcardContainer">
+        <div class="top-bar">
+            <div id="progress" style="color: #ffffff;"></div>
+        </div>
+        <div class="flashcard" id="flashcard" onclick="flipFlashcard()">
+            <div id="front" class="front"></div>
+            <div id="back" class="back"></div>
+        </div>
+    </div>
+    <div class="buttons">
+        <button onclick="prevFlashcard()">Prev</button>
+        <button onclick="nextFlashcard()">Next</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>

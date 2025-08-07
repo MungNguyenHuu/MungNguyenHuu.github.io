@@ -1,0 +1,101 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px;
+}
+
+h1 {
+    color: #02ff47;
+    margin-bottom: 20px;
+}
+
+.controls select,
+.controls button {
+    padding: 10px 15px;
+    margin: 10px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+
+.controls select:focus,
+.controls button:hover {
+    outline: none;
+    border-color: #007bff;
+}
+
+#quizContainer {
+    margin-top: 30px;
+    background-color: #2a2a2a;
+    padding: 25px;
+    border-radius: 8px;
+    display: inline-block;
+    min-width: 400px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+#questionBox {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.choice {
+    font-size: 22px;
+    background-color: #3c3c3c;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: 1px solid #444;
+}
+
+.choice:hover {
+    background-color: #505050;
+}
+
+.correct {
+    background-color: #00aa09 !important;
+    color: #fff;
+}
+
+.incorrect {
+    background-color: #cf3a3a !important;
+    color: #fff;
+}
+
+#feedback {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #ffcc00;
+}
+
+.hidden {
+    display: none;
+}
+
+#nextButton, #prevButton {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+#lessonSelect option:hover {
+    color: rgb(255, 0, 140);
+}

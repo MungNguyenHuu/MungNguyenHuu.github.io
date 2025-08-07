@@ -1,9 +1,8 @@
 let flashcards = [];
 let filteredFlashcards = [];
-let currentIndex = 0;
 
 // Tự động tải file Excel từ cùng thư mục
-const filePath = "TuVungN4N5.xlsx";
+const filePath = "/data/TuVungN4N5.xlsx";
 
 function loadExcel() {
     fetch(filePath)
@@ -176,17 +175,17 @@ function prevFlashcard() {
 }
 
 document.getElementById("showPdfButton").addEventListener("click", function () {
-    const pdfFilePath = "TuVungN4N5.pdf";
+    const pdfFilePath = "/data/TuVungN4N5.pdf";
     window.open(pdfFilePath, "_blank"); // Mở file PDF trong tab mới
 });
 
-
-// Tự động tải file Excel khi trang được tải
-// loadExcel();
+document.getElementById("quizButton").addEventListener("click", function () {
+    window.location.href = "quiz.html";
+});
 
 
 function loadAllExcel() {
-    loadExcel(); // Chính là hàm đã có
+    loadExcel();
 }
 
 function loadKanjiExcel() {
@@ -205,4 +204,3 @@ function loadKanjiExcel() {
         .catch(err => console.error("Không thể đọc file Excel:", err));
     document.getElementById("flashcard").classList.add("kanji-mode");
 }
-
