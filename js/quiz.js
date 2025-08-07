@@ -172,13 +172,27 @@ function generateQuestions(allData, selectedLesson, type) {
 function showQuestion() {
     const questionData = questions[currentIndex];
     document.getElementById("questionBox").innerText = `Question ${currentIndex + 1}/${questions.length}: ${questionData.question}`;
+
     const choicesDiv = document.getElementById("choices");
     choicesDiv.innerHTML = '';
+    choicesDiv.style.display = 'grid';
+    choicesDiv.style.gridTemplateColumns = '1fr 1fr';
+    choicesDiv.style.gap = '10px';
+    choicesDiv.style.marginTop = '15px';
 
     questionData.choices.forEach((choice, index) => {
         const div = document.createElement("div");
         div.className = "choice";
         div.innerText = `${index + 1}. ${choice}`;
+        div.style.padding = '12px';
+        div.style.fontSize = '18px';
+        div.style.textAlign = 'center';
+        div.style.border = '1px solid #ccc';
+        div.style.borderRadius = '6px';
+        div.style.backgroundColor = '#1e1e1e';
+        div.style.color = '#fff';
+        div.style.cursor = 'pointer';
+
         div.onclick = () => handleAnswer(choice);
         choicesDiv.appendChild(div);
     });

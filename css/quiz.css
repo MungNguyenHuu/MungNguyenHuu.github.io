@@ -3,12 +3,6 @@ body {
     background-color: #1e1e1e;
     color: #ffffff;
     text-align: center;
-    padding: 30px;
-}
-
-h1 {
-    color: #02ff47;
-    margin-bottom: 20px;
 }
 
 .controls select,
@@ -29,13 +23,12 @@ h1 {
 }
 
 #quizContainer {
-    margin-top: 30px;
     background-color: #2a2a2a;
     padding: 25px;
     border-radius: 8px;
     display: inline-block;
     min-width: 400px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
 #questionBox {
@@ -84,7 +77,8 @@ h1 {
     display: none;
 }
 
-#nextButton, #prevButton {
+#nextButton,
+#prevButton {
     margin-top: 15px;
     padding: 10px 20px;
     border: none;
